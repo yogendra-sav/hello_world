@@ -5,10 +5,9 @@ frontend:
     preBuild:
       commands:
         - pip3 install -r requirements.txt
+        - ls
     build:
       commands:
-        - pwd
-        - ls
         - uvicorn main:app
   artifacts:
     # IMPORTANT - Please verify your build output directory
