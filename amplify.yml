@@ -9,7 +9,6 @@ frontend:
       commands:
         - pwd
         - ls
-        - cd ..
         - uvicorn main:app
   artifacts:
     # IMPORTANT - Please verify your build output directory
