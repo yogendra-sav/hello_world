@@ -5,7 +5,6 @@ frontend:
     preBuild:
       commands:
         - pip3 install -r requirements.txt
-        - ls
     build:
       commands:
         - uvicorn main:app
