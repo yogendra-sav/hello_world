@@ -1,0 +1,79 @@
+# version: 1
+# frontend:
+#   phases:
+#     # IMPORTANT - Please verify your build commands
+#     preBuild:
+#       commands:
+#         - pip3 install --no-cache-dir -r requirements.txt
+#     build:
+#       commands:
+#         - cd front_end/
+#         - uvicorn main:app --host 0.0.0.0 --port 80 &
+#   artifacts:
+#     # IMPORTANT - Please verify your build output directory
+#     baseDirectory: front_end/app/templates/
+#     files:
+#       - '**/*'
+#   cache:
+#     paths: []
+#   build:
+#     computeType: BUILD_GENERAL1_LARGE
+#     timeout: 60 minutes
+
+# version: 1
+# backend:
+#   phases:
+#     build:
+#       commands:
+#         - pip install -r requirements.txt
+#         - uvicorn main:app --host 0.0.0.0 --port 8000
+#   cache:
+#     paths: []
+#   artifacts:
+#     baseDirectory: front_end/app/templates
+#     files:
+#       - '**/*'
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - pwd
+        - ls
+        - ls
+        - echo "[app]" >> .env
+        - echo "  name=registry-audit" >> .env
+        - echo "  log_level=DEBUG" >> .env
+        - echo "  session=10" >> .env
+        - echo "  key='0lQR05AE53Ug-AnRstxeLNnlFXpgdxQ0jXKK3YQDkK0='" >> .env
+
+        - echo "[aws-cognito-idp]" >> .env
+        - echo "  region_name=us-east-2" >> .env
+        - echo "  app_client_id=1ho02h8fpgl79t0qvh2easn2jd" >> .env
+        - echo "  app_client_secret=1kndav4t5kmlq1a1nldfkk1vvh616oa1dv16q0ihfp93bb5gkccv" >> .env
+        - echo "  user_pool_id=us-east-2_mOYkTxFss" >> .env
+
+        - echo "[db]" >> .env
+        - echo "  host=new-sav-backend-dev-cluster-v2-cluster.ctytols2cgbj.us-east-2.rds.amazonaws.com" >> .env
+        - echo "  username=admin" >> .env
+        - echo "  password=4S2hY2Z#h3Rr" >> .env
+        - ls
+        - pip3 install --no-cache-dir -r requirements.txt
+    build:
+      commands:
+        - uvicorn main:app --host 0.0.0.0 --port 80 &
+  artifacts:
+    baseDirectory: .
+    files:
+      - '**/*'
+  publish: true
+# frontend:
+#   phases:
+#     build:
+#       commands:
+#         - echo "Skipping build phase for frontend"
+#   artifacts:
+#     baseDirectory: .
+#     files:
+#       - '**/*'
+#   publish: true
