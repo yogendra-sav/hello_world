@@ -30,7 +30,7 @@ backend:
     build:
       commands:
         - ls
-        - uvicorn main:app --host 0.0.0.0 --port 80
+        - uvicorn main:app --host 0.0.0.0 --port 80 &
   artifacts:
     baseDirectory: .
     files:
@@ -42,7 +42,7 @@ frontend:
       commands:
         - echo "Skipping build phase for frontend"
   artifacts:
-    baseDirectory: front_end/app/templates
+    baseDirectory: .
     files:
       - '**/*'
   publish: true
