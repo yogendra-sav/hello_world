@@ -1,38 +1,3 @@
-# version: 1
-# frontend:
-#   phases:
-#     # IMPORTANT - Please verify your build commands
-#     preBuild:
-#       commands:
-#         - pip3 install --no-cache-dir -r requirements.txt
-#     build:
-#       commands:
-#         - cd front_end/
-#         - uvicorn main:app --host 0.0.0.0 --port 80 &
-#   artifacts:
-#     # IMPORTANT - Please verify your build output directory
-#     baseDirectory: front_end/app/templates/
-#     files:
-#       - '**/*'
-#   cache:
-#     paths: []
-#   build:
-#     computeType: BUILD_GENERAL1_LARGE
-#     timeout: 60 minutes
-
-# version: 1
-# backend:
-#   phases:
-#     build:
-#       commands:
-#         - pip install -r requirements.txt
-#         - uvicorn main:app --host 0.0.0.0 --port 8000
-#   cache:
-#     paths: []
-#   artifacts:
-#     baseDirectory: front_end/app/templates
-#     files:
-#       - '**/*'
 version: 1
 frontend:
   phases:
@@ -41,6 +6,8 @@ frontend:
         - pwd
         - ls
         - ls
+        - pip3 install --no-cache-dir -r requirements.txt
+        - cd front_end/
         - echo "[app]" >> .env
         - echo "  name=registry-audit" >> .env
         - echo "  log_level=DEBUG" >> .env
@@ -58,7 +25,6 @@ frontend:
         - echo "  username=admin" >> .env
         - echo "  password=4S2hY2Z#h3Rr" >> .env
         - ls
-        - pip3 install --no-cache-dir -r requirements.txt
     build:
       commands:
         - uvicorn main:app --host 0.0.0.0 --port 80 &
