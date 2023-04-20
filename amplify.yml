@@ -56,7 +56,12 @@ backend:
         - pwd
         - ls
         - pip3 install -r requirements.txt
-        - sudo yum install cronie
+        - yum update -y
+        - yum install -y cronie
+        - systemctl enable crond
+        - systemctl start crond
+
+
     build:
       commands:
         # - cd front_end/
