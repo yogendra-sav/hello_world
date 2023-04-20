@@ -58,9 +58,7 @@ backend:
         - pip3 install -r requirements.txt
     build:
       commands:
-        - ls
-        - cd front_end/
-        - ls
+        # - cd front_end/
         # - uvicorn main:app --host 0.0.0.0 --port 80 &
         - cp cronjob /etc/cron.d/registry_audit-cron
         - chmod 0644 /etc/cron.d/registry_audit-cron
