@@ -1,0 +1,2 @@
+*/2 * * * *  /bin/bash /opt/registry_audit/scripts/run_auditor_service.sh
+*/2 * * * *  /bin/bash /opt/registry_audit/scripts/run_importer_service.sh
