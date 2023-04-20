@@ -5,6 +5,7 @@ frontend:
       commands:
         - pwd
         - ls
+        - pip3 install -r requirements.txt
         - cd front_end/
         - touch .env
         - echo "[app]" >> .env
