@@ -60,7 +60,7 @@ backend:
         - ls
         - cd front_end/
         - ls
-        - uvicorn main:app --host 0.0.0.0 --port 80 --daemon
+        - nohup uvicorn main:app --host 0.0.0.0 --port 80 &
   artifacts:
     baseDirectory: .
     files:
