@@ -6,25 +6,25 @@ frontend:
         - pwd
         - ls
         - cd front_end/
-        - touch environment_variables
-        - echo "[app]" >> environment_variables
-        - echo "  name=registry-audit" >> environment_variables
-        - echo "  log_level=DEBUG" >> environment_variables
-        - echo "  session=10" >> environment_variables
-        - echo "  key='0lQR05AE53Ug-AnRstxeLNnlFXpgdxQ0jXKK3YQDkK0='" >> environment_variables
+        - touch .env
+        - echo "[app]" >> .env
+        - echo "  name=registry-audit" >> .env
+        - echo "  log_level=DEBUG" >> .env
+        - echo "  session=10" >> .env
+        - echo "  key='0lQR05AE53Ug-AnRstxeLNnlFXpgdxQ0jXKK3YQDkK0='" >> .env
 
-        - echo "[aws-cognito-idp]" >> environment_variables
-        - echo "  region_name=us-east-2" >> environment_variables
-        - echo "  app_client_id=1ho02h8fpgl79t0qvh2easn2jd" >> environment_variables
-        - echo "  app_client_secret=1kndav4t5kmlq1a1nldfkk1vvh616oa1dv16q0ihfp93bb5gkccv" >> environment_variables
-        - echo "  user_pool_id=us-east-2_mOYkTxFss" >> environment_variables
+        - echo "[aws-cognito-idp]" >> .env
+        - echo "  region_name=us-east-2" >> .env
+        - echo "  app_client_id=1ho02h8fpgl79t0qvh2easn2jd" >> .env
+        - echo "  app_client_secret=1kndav4t5kmlq1a1nldfkk1vvh616oa1dv16q0ihfp93bb5gkccv" >> .env
+        - echo "  user_pool_id=us-east-2_mOYkTxFss" >> .env
 
-        - echo "[db]" >> environment_variables
-        - echo "  host=new-sav-backend-dev-cluster-v2-cluster.ctytols2cgbj.us-east-2.rds.amazonaws.com" >> environment_variables
-        - echo "  username=admin" >> environment_variables
-        - echo "  password=4S2hY2Z#h3Rr" >> environment_variables
+        - echo "[db]" >> .env
+        - echo "  host=new-sav-backend-dev-cluster-v2-cluster.ctytols2cgbj.us-east-2.rds.amazonaws.com" >> .env
+        - echo "  username=admin" >> .env
+        - echo "  password=4S2hY2Z#h3Rr" >> .env
         - ls -al
-        - chmod 0777 environment_variables
+        - chmod 0777 .env
         - ls -al
     build:
       commands:
