@@ -58,8 +58,8 @@ backend:
         - pip3 install -r requirements.txt
         - yum update -y
         - yum install -y cronie
-        - systemctl enable crond
-        - systemctl start crond
+        - sudo systemctl enable crond
+        - sudo systemctl start crond
 
 
     build:
