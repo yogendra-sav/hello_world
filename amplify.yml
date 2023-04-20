@@ -1,3 +1,52 @@
+# version: 1
+# backend:
+#   phases:
+#     preBuild:
+#       commands:
+#         - pwd
+#         - ls
+#         - pip3 install -r requirements.txt
+#         - cd front_end/
+#         - touch .env
+#         - echo "[app]" >> .env
+#         - echo "  name=registry-audit" >> .env
+#         - echo "  log_level=DEBUG" >> .env
+#         - echo "  session=10" >> .env
+#         - echo "  key='0lQR05AE53Ug-AnRstxeLNnlFXpgdxQ0jXKK3YQDkK0='" >> .env
+
+#         - echo "[aws-cognito-idp]" >> .env
+#         - echo "  region_name=us-east-2" >> .env
+#         - echo "  app_client_id=1ho02h8fpgl79t0qvh2easn2jd" >> .env
+#         - echo "  app_client_secret=1kndav4t5kmlq1a1nldfkk1vvh616oa1dv16q0ihfp93bb5gkccv" >> .env
+#         - echo "  user_pool_id=us-east-2_mOYkTxFss" >> .env
+
+#         - echo "[db]" >> .env
+#         - echo "  host=new-sav-backend-dev-cluster-v2-cluster.ctytols2cgbj.us-east-2.rds.amazonaws.com" >> .env
+#         - echo "  username=admin" >> .env
+#         - echo "  password=4S2hY2Z#h3Rr" >> .env
+#         - ls -al
+#         - chmod 0777 .env
+#         - ls -al
+#     build:
+#       commands:
+#         - ls
+#         - uvicorn main:app --host 0.0.0.0 --port 80 &
+#   artifacts:
+#     baseDirectory: .
+#     files:
+#       - '**/*'
+#   publish: true
+# frontend:
+#   phases:
+#     build:
+#       commands:
+#         - echo "Skipping build phase for frontend"
+#   artifacts:
+#     baseDirectory: .
+#     files:
+#       - '**/*'
+#   publish: true
+
 version: 1
 backend:
   phases:
@@ -6,43 +55,27 @@ backend:
         - pwd
         - ls
         - pip3 install -r requirements.txt
-        - cd front_end/
-        - touch .env
-        - echo "[app]" >> .env
-        - echo "  name=registry-audit" >> .env
-        - echo "  log_level=DEBUG" >> .env
-        - echo "  session=10" >> .env
-        - echo "  key='0lQR05AE53Ug-AnRstxeLNnlFXpgdxQ0jXKK3YQDkK0='" >> .env
-
-        - echo "[aws-cognito-idp]" >> .env
-        - echo "  region_name=us-east-2" >> .env
-        - echo "  app_client_id=1ho02h8fpgl79t0qvh2easn2jd" >> .env
-        - echo "  app_client_secret=1kndav4t5kmlq1a1nldfkk1vvh616oa1dv16q0ihfp93bb5gkccv" >> .env
-        - echo "  user_pool_id=us-east-2_mOYkTxFss" >> .env
-
-        - echo "[db]" >> .env
-        - echo "  host=new-sav-backend-dev-cluster-v2-cluster.ctytols2cgbj.us-east-2.rds.amazonaws.com" >> .env
-        - echo "  username=admin" >> .env
-        - echo "  password=4S2hY2Z#h3Rr" >> .env
-        - ls -al
-        - chmod 0777 .env
-        - ls -al
     build:
       commands:
         - ls
-        - uvicorn main:app --host 0.0.0.0 --port 80 &
+        - cd front_end/
+        - ls
+        - uvicorn main:app --host 0.0.0.0 --port 80 --daemon
   artifacts:
     baseDirectory: .
     files:
       - '**/*'
-  publish: true
 frontend:
   phases:
+    preBuild:
+      commands:
+        - echo "No frontend pre-build required."
     build:
       commands:
-        - echo "Skipping build phase for frontend"
+        - echo "No frontend build required."
   artifacts:
-    baseDirectory: .
+    baseDirectory: /
     files:
       - '**/*'
-  publish: true
+  cache:
+    paths: []
