@@ -56,11 +56,12 @@ backend:
         - pwd
         - ls
         - pip3 install -r requirements.txt
-        - yum update -y
-        - yum install -y cronie
-        - sudo systemctl enable crond
-        - sudo systemctl start crond
-
+        - apt-get update && apt-get install -y cron lftp
+        - apt-get clean
+        # - yum update -y
+        # - yum install -y cronie
+        # - sudo systemctl enable crond
+        # - sudo systemctl start crond
 
     build:
       commands:
