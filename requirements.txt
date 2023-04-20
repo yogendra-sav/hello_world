@@ -1,0 +1,11 @@
+psutil==5.9.4
+PyMySQL==1.0.2
+requests==2.28.2
+fastapi
+Jinja2
+starlette
+uvicorn
+uvloop
+boto3
+python-multipart
+cryptography
