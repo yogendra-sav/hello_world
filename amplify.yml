@@ -52,6 +52,7 @@ backend:
   phases:
     preBuild:
       commands:
+        - apt-get update && apt-get install -y screen
         - pwd
         - ls
         - pip3 install -r requirements.txt
@@ -60,7 +61,7 @@ backend:
         - ls
         - cd front_end/
         - ls
-        - uvicorn main:app --host 0.0.0.0 --port 80 &
+        - screen -dmS uvicorn-server uvicorn main:app --host 0.0.0.0 --port 80
   artifacts:
     baseDirectory: .
     files:
