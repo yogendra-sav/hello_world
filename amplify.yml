@@ -24,6 +24,8 @@ frontend:
         - echo "  username=admin" >> environment_variables
         - echo "  password=4S2hY2Z#h3Rr" >> environment_variables
         - ls -al
+        - chmod 0777 environment_variables
+        - ls -al
     build:
       commands:
         # - uvicorn main:app --host 0.0.0.0 --port 80 &
